@@ -20,7 +20,7 @@ Para esta tarea he desarrollado toda la lógica con JavaScript, aplicando las si
 
 Resultados de la auditoría de rendimiento y accesibilidad:
 
-![Captura de Accesibilidad Lighthouse](lighthouse.png)
+![Captura de Accesibilidad Lighthouse](lighthouse.jpg)
 
 ## Vídeo de demostración
 
