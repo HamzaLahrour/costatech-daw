@@ -1,0 +1,1432 @@
+:root {
+    --primary: #1E90FF;
+    --secondary: #F8F7F4;
+    --text-color: #000000;
+    --footer-text: #ffffff;
+    --font-base: "Poppins", sans-serif;
+    --font-title: "Montserrat", sans-serif;
+    --border-radius: 6px;
+    
+    /* Tipografías fluidas con clamp */
+    --font-size-base: clamp(0.875rem, 0.8rem + 0.4vw, 1rem);
+    --font-size-h1: clamp(1.75rem, 1.5rem + 1.5vw, 2.5rem);
+    --font-size-h2: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+    --font-size-h3: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
+    --font-size-precio: clamp(1.25rem, 1.1rem + 0.8vw, 1.5rem);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* BODY */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: var(--font-base);
+    font-size: var(--font-size-base);
+}
+
+/* HEADER */
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 50px;
+  padding: 0 20px;
+}
+
+/* CONTENEDOR INTERNO */
+.header-contenido {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  gap: 50px;
+}
+/* LOGO */
+#fotologo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    transition: transform 0.3s;
+}
+#fotologo svg {
+  width: 120px;
+  height: auto;
+}
+/* Accesibilidad: Saltar al contenido principal */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  /* Lo escondemos arriba, fuera de la pantalla */
+  left: 0;
+  background-color: var(--primary);
+  color: white;
+  padding: 12px 24px;
+  z-index: 9999;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom-right-radius: var(--border-radius);
+  transition: top 0.3s ease;
+  /* Transición suave obligatoria de la práctica */
+}
+
+.skip-link:focus {
+  top: 0;
+  /* Aparece en pantalla al recibir el foco con el tabulador */
+  outline: 3px solid #000000;
+  outline-offset: 2px;
+}
+/*Animacion logo*/
+
+#fondo-negro{
+  animation: entradaLogo 1s ease forwards;
+}
+
+@keyframes entradaLogo{
+  0%{transform: translateX(-70px) scale(1.09); opacity: 0;}
+  100% {transform: translateX(0) scale(1); opacity: 1;}
+}
+
+#texto-tech {
+  transform-origin: 83px 38px;
+  transition: transform 0.3s ease;
+}
+
+/*Crece sutilmente*/
+#texto-tech:hover {
+  transform: scale(1.2);
+}
+
+/*
+#fotologo img {
+    height: 140px;
+    width: auto;
+    display: block;
+}
+*/
+
+#fotologo:hover {
+    transform: scale(1.05);
+}
+
+/* MENÚ */
+.nav-header {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+
+  position: relative;
+}
+
+.nav-header .menu {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.nav-header .menu li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.nav-header .menu li a:hover {
+    color: var(--primary);
+    transform: scale(1.05);
+}
+
+.nav-header .menu li a:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.nav-header .menu li a:visited {
+    color: #5a189a;
+}
+
+/* BUSCADOR */
+.buscador {
+    display: flex;
+    align-items: stretch;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    height: 35px;
+    transition: box-shadow 0.3s;
+}
+
+.buscador:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.buscador .input-busqueda {
+    border: none;
+    padding: 0 12px;
+    outline: none;
+    font-size: 14px;
+    min-width: 180px;
+}
+
+.buscador .input-busqueda:focus,
+.buscador .input-busqueda:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: -2px;
+}
+
+.buscador .btn-lupa {
+    background-color: var(--primary);
+    border: none;
+    padding: 0 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.buscador .btn-lupa:hover {
+    background-color: #1873CC;
+    transform: scale(1.05);
+}
+
+.buscador .btn-lupa:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 3px;
+}
+
+.buscador .btn-lupa img {
+    height: 18px;
+    width: 18px;
+}
+
+/* ICONOS */
+.iconos {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.iconos img {
+    height: 28px;
+    width: 28px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.iconos img:hover {
+    transform: scale(1.1);
+}
+
+.iconos img:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* MAIN */
+.producto-main {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: var(--font-base);
+}
+
+/* ROADMAP */
+
+
+
+.roadmap {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.roadmap ol {
+  /* Quita los números */
+  list-style: none; 
+  padding: 0;
+  margin: 0;
+  display: flex; 
+  flex-wrap: wrap; 
+}
+
+/* Estilos para cada <li> */
+.roadmap li {
+  display: flex; 
+  align-items: center;
+}
+
+
+.roadmap li:not(:first-child)::before {
+  content: "/";
+  margin: 0 0.5em; 
+  color: #666;
+}
+
+.roadmap a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.roadmap a:hover {
+  color: #125fa8;
+}
+
+.roadmap a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.roadmap a:visited {
+  color: #5a189a;
+}
+
+/* FICHA PRODUCTO */
+.ficha-producto {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.producto-info h1{
+  animation: entradaH1 3s ease forwards;
+}
+
+@keyframes entradaH1{
+  0% {transform: translateX(-50px); opacity: 0;}
+  100% {transform: translateX(0); opacity: 1;}
+}
+
+.producto-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  
+  transition: transform 0.3s;
+  animation: colorBorde 4s ease-in-out infinite ;
+}
+
+@keyframes colorBorde{
+0%   { box-shadow: 0 0 12px 3px #1E90FF; }
+ 50%  { box-shadow: 0 0 12px 3px #a855f7; }
+ 100% { box-shadow: 0 0 12px 3px #1E90FF; }
+}
+
+.producto-img img:hover {
+  transform: scale(1.05);
+}
+
+.producto-info {
+  min-width: 250px;
+}
+
+.producto-info h1 {
+  font-family: var(--font-title);
+  font-size: var(--font-size-h1);
+  margin: 0 0 10px 0;
+}
+
+.precio {
+  font-size: var(--font-size-precio);
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.caracteristicas {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 25px 0;
+}
+
+.caracteristicas li {
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.caracteristicas li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+}
+
+/* BOTÓN */
+.btn-comprar {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  animation: pulseBoton 2s ease-in-out infinite;
+}
+
+@keyframes pulseBoton{
+  0% {transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.4);}
+  50% {transform: scale(1.05); box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);}
+  100% {transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);}
+}
+
+.btn-comprar:hover {
+  background-color: #1873CC;
+  transform: scale(1.05);
+}
+
+.btn-comprar:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.envio {
+  margin-top: 15px;
+  color: #555;
+  font-size: 14px;
+}
+
+/* RELACIONADOS */
+.relacionados {
+  margin-top: 60px;
+}
+
+.relacionados h2 {
+  font-size: var(--font-size-h2);
+  margin-bottom: 25px;
+  font-family: var(--font-title);
+}
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: transform 0.3s, box-shadow 0.3s,background-color 0.3s;
+}
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card h3 {
+  font-weight: 500;
+  margin: 5px 0;
+  font-size: var(--font-size-base); 
+}
+
+.card h3 a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+}
+
+.card h3 a:hover {
+  color: var(--primary); 
+}
+
+.card h3 a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+
+.card:hover {
+  transform: scale(1.03) translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+  background-color: #eef5ff;
+}
+
+/* TECLADO — Tab */
+.card:focus-visible {
+  transform: scale(1.03) translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  background-color: #eef5ff;
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.card .nombre {
+  font-weight: 500;
+  margin: 5px 0;
+}
+
+.card .precio {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.separador-contenedor {
+  width: 100%;
+  overflow: hidden;
+  
+  height: 4px;
+}
+
+.separador-barra {
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, #1E90FF, #ff6b6b, #51cf66, #a855f7, #1E90FF);
+  background-size: 300% 300%;
+  animation: moverBarra 3s ease-in-out infinite alternate, cambiarColor 5s ease-in-out infinite;
+}
+
+@keyframes moverBarra{
+  0% {transform: translateX(0%);}
+  100% {transform: translateX(200%);}
+}
+
+@keyframes cambiarColor{
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+
+}
+
+/* FOOTER */
+.footer {
+  width: 100%;
+  margin: 0;
+  background-color: #111;
+  color: #fff;
+  padding: 50px 20px 20px;
+  font-family: var(--font-base);
+  box-sizing: border-box;
+}
+
+.footer-contenido {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.footer-logo h2 {
+  font-family: var(--font-title);
+  color: var(--primary);
+  font-size: 28px;
+  margin: 0;
+}
+
+.footer-seccion h3 {
+  font-size: var(--font-size-h3);
+  margin-bottom: 15px;
+  color: var(--primary);
+}
+
+.footer-seccion ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-seccion ul li {
+  margin-bottom: 10px;
+}
+
+.footer-seccion ul li a {
+  text-decoration: none;
+  color: #ddd;
+  transition: color 0.3s;
+}
+
+.footer-seccion ul li a:hover {
+  color: var(--primary);
+}
+
+.footer-seccion ul li a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.footer-seccion ul li a:visited {
+  color: #b8b8b8;
+}
+
+.footer-seccion p {
+  margin: 6px 0;
+  color: #ccc;
+}
+
+/* LÍNEA SEPARADORA */
+.footer-bottom {
+  border-top: 1px solid #333;
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-bottom p {
+  font-size: 14px;
+  color: #bbb;
+  margin: 0;
+}
+
+/* ICONOS DE MARCAS */
+.footer-marcas {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-marcas img {
+  height: 28px;
+  width: auto;
+  opacity: 0.8;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.footer-marcas img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+#btnSubir {
+  /* Lo dejamos flotando fijo abajo a la derecha por encima de todo */
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 999;
+
+  /* De base está oculto, el JS ya se encargará de cambiarlo a flex cuando hagamos scroll */
+  display: none;
+
+  /* Tamaños iguales y border-radius al 50% para hacer el círculo perfecto */
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: none;
+
+  /* Le pongo un azul tipo Bootstrap y el icono en blanco */
+  background-color: #0d6efd;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+
+  /* Flexbox rápido para que la flecha quede perfectamente centrada en el círculo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Sombrita para que no quede plano y transition para que la animación del hover sea fluida */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Efecto al pasar el ratón para que reaccione y parezca un botón físico */
+#btnSubir:hover {
+  background-color: #0b5ed7;
+  /* Lo levantamos unos píxeles y hacemos la sombra un poco más grande */
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+.btn-menu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  color: var(--text-color);
+  flex-shrink: 0;
+  margin-left: 6px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+  /* HEADER */
+  .header {
+      box-sizing: border-box;
+      /* Crucial para que el padding no sume anchura */
+      padding: 0.75rem 1.2rem;
+      /* Le damos un poco más de aire lateral */
+    }
+
+  /* 🔥 FIX 1: Reducimos el logo en móvil para que no empuje al botón fuera de la pantalla */
+  #fotologo svg {
+    width: 80px;
+    height: auto;
+  }
+
+  /* 🔥 FIX 2: Evitamos el desbordamiento (Overflow) */
+  .nav-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+  }
+
+  /* Ordenamos los elementos visualmente */
+    .buscador {
+      order: 1;
+      flex-shrink: 1;
+      /* Permite que el buscador se encoja si falta espacio */
+      width: 100%;
+      max-width: 130px;
+    }
+
+    .iconos {
+      order: 2;
+      flex-shrink: 0;
+    }
+
+    .btn-menu {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      order: 3;
+      margin-left: 5px;
+      margin-right: 5px;
+      /* Le damos su propio espacio personal contra la pared */
+      flex-shrink: 0;
+      /* Prohibimos que Flexbox lo aplaste */
+    }
+
+  /* Buscador adaptado a pantallas pequeñas */
+    .buscador .input-busqueda {
+      min-width: 50px;
+      /* Bajamos el límite para que no empuje */
+      width: 100%;
+      flex: 1;
+      /* Ocupa el espacio restante sin pelear */
+      padding: 0 8px;
+      /* Un poco menos de padding en móvil */
+    }
+
+        .buscador .btn-lupa {
+          flex-shrink: 0 !important;
+          /* Flexbox, PROHIBIDO encoger este elemento */
+          width: 35px;
+          /* Ancho fijo para proteger la lupa */
+          padding: 0;
+          /* Quitamos padding horizontal excesivo */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+  /* 🔥 FIX 3: El menú desplegable con animación elegante de tu referencia */
+  .nav-header .menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    /* Despliega justo debajo del header */
+    left: 0;
+    width: 100%;
+    background-color: var(--secondary);
+    gap: 0;
+    max-height: 0;
+    /* Oculto por defecto */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    /* Animación fluida */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* La clase JS lo expande suavemente */
+  .nav-header .menu.activo {
+    max-height: 250px;
+  }
+
+  .nav-header .menu li {
+    text-align: center;
+    width: 100%;
+  }
+
+  .nav-header .menu li a {
+    display: block;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+/* FIX EXTRA: Para pantallas extremadamente pequeñas (iPhone SE, etc) */
+@media (max-width: 400px) {
+  .buscador .input-busqueda {
+    min-width: 70px;
+    max-width: 85px;
+  }
+
+  .nav-header {
+    gap: 5px;
+  }
+}
+
+
+.btn-eliminar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  margin: 10px auto 0;
+  background-color: var(--primary);
+  color: var(--footer-text);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-family: var(--font-base);
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+
+.btn-eliminar svg {
+  width: 35px;
+  height: 35px;
+}
+
+.btn-eliminar:hover {
+  background-color: #0e77ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(30, 144, 255, 0.3);
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake{
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(-5px); }
+  50%  { transform: translateX(5px); }
+  75%  { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.btn-eliminar:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(30, 144, 255, 0.2);
+}
+
+
+.btn-comprar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-comprar svg {
+  width: 35px;
+  height: 35px;
+    flex-shrink: 0;
+      /* evita que se comprima */
+}
+
+
+.envio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.envio svg {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.icon-usuario-svg {
+  width: 31px;
+  height: 31px;
+  color: #000000;
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.link-usuario:hover .icon-usuario-svg {
+  transform: scale(1.1);
+  color: #333333;
+}
+
+
+
+.icon-svg {
+  width: 33px;
+  height: 33px;
+  color: #000000;
+  transition: transform 0.2s ease;
+  display: block;
+}
+
+.link-header {
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px;
+}
+
+.link-header:hover .icon-svg {
+  transform: scale(1.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/*ESTILOS DEL CARRUSEL*/
+
+/* Contenedor principal para darle aire y centrarlo en pantallas grandes */
+.seccion-carrusel {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.titulo-seccion {
+  margin-bottom: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* El relativo es súper importante aquí para que las flechas con position absolute no se salgan de esta caja */
+.carrusel-contenedor {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.carrusel-pista {
+  display: flex;
+  gap: 20px;
+  /* Separación limpia entre cada producto */
+  overflow-x: auto;
+  /* Activamos el scroll horizontal */
+  scroll-behavior: smooth;
+  /* Hace que al pulsar las flechas el movimiento sea fluido y no un salto brusco */
+
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+
+  /* Ocultar la barra de scroll en Windows y navegadores estándar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Ocultamos también la barra de scroll en navegadores basados en WebKit */
+.carrusel-pista::-webkit-scrollbar {
+  display: none;
+}
+
+/* Estilos de la estructura de cada producto individual */
+.tarjeta-producto {
+  /* En móviles queremos que ocupe casi toda la pantalla pero dejando asomar un poco la siguiente */
+  flex: 0 0 calc(100% / 1.2);
+  max-width: 280px;
+
+  /* Le decimos al navegador dónde tiene que frenar exactamente cuando hacemos scroll con el dedo */
+  scroll-snap-align: start;
+
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  /* Transición preparada para que el hover no sea de golpe */
+}
+
+/* Efecto al pasar el ratón para dar sensación de que la tarjeta interactúa */
+.tarjeta-producto:hover {
+  transform: translateY(-5px);
+}
+
+.producto-info {
+  padding: 15px;
+}
+
+.producto-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+/* Los botones de flechas para navegar cómodamente en PC */
+.btn-flecha {
+  position: absolute;
+  /* Se salen del flujo normal para ponerse flotando encima de la pista */
+  top: 50%;
+  transform: translateY(-50%);
+  /* Truco matemático para el centrado vertical perfecto */
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  /* Las hacemos totalmente redondas */
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+  /* Nos aseguramos de que siempre estén por encima de las fotos de los productos */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Sacamos las flechas un pelín por fuera del contenedor para que no tapen el contenido de la primera y última tarjeta */
+.flecha-izq {
+  left: -15px;
+}
+
+.flecha-der {
+  right: -15px;
+}
+
+@media (min-width: 768px) {
+  .tarjeta-producto {
+    /* En tablets ajustamos la fórmula para que quepan exactamente 3 tarjetas enteras a la vez */
+    flex: 0 0 calc(100% / 3);
+  }
+}
+
+@media (min-width: 1024px) {
+  .tarjeta-producto {
+    /* En monitores de PC mostramos 4 tarjetas de golpe usando todo el ancho disponible */
+    flex: 0 0 calc(100% / 4);
+  }
+}
+
+/*ACORDEON ESTILOS*/
+
+.acordeon {
+  margin: 20px 0;
+  border-top: 1px solid #eaeaea;
+}
+
+.acordeon-item {
+  border-bottom: 1px solid #eaeaea;
+}
+
+/* El botón que pulsamos para desplegar */
+.acordeon-cabecera {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.3s ease;
+}
+
+.acordeon-cabecera:hover {
+  color: #0d6efd;
+}
+
+/* El icono del + y el - */
+.acordeon-icono {
+  font-size: 1.5rem;
+  font-weight: 400;
+  transition: transform 0.3s ease;
+}
+
+/* LA MAGIA DEL DESPLEGABLE */
+.acordeon-contenido {
+  max-height: 0;
+  overflow: hidden;
+  /* Oculta el contenido si se sale */
+  transition: max-height 0.4s ease-out;
+  /* Animación súper suave */
+}
+
+.acordeon-cuerpo {
+  padding-bottom: 15px;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.acordeon-cuerpo ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+/* Clases dinámicas que meteremos con JavaScript */
+.acordeon-item.activo .acordeon-contenido {
+  max-height: 500px;
+  /* Un valor alto para que quepa cualquier texto */
+}
+
+.acordeon-item.activo .acordeon-icono {
+  transform: rotate(45deg);
+  /* Convierte el + en una X al girar */
+  color: #0d6efd;
+}
+
+
+
+
+
+.toast-container {
+  position: fixed;
+  top: 80px;
+  /* Un poco separado de arriba por si la cabecera es fija */
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.notificacion {
+  background-color: #222;
+  color: white;
+  padding: 16px 20px;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-left: 5px solid #1e90ff;
+  animation: deslizarEntrada 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+/* Colores según el tipo de aviso */
+.notificacion.exito {
+  border-left-color: #28a745;
+}
+
+.notificacion.aviso {
+  border-left-color: #dc3545;
+}
+
+/* Rojo para eliminar */
+
+@keyframes deslizarEntrada {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.notificacion.saliendo {
+  animation: deslizarSalida 0.4s ease forwards;
+}
+
+@keyframes deslizarSalida {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+
+
+
+.carrito-lateral {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  /* Escondido por la derecha */
+  width: 100%;
+  max-width: 350px;
+  height: 100vh;
+  background-color: white;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 10000;
+  transition: right 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.carrito-lateral.abierto {
+  right: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: none;
+}
+
+.overlay.activo {
+  display: block;
+}
+
+.carrito-cabecera {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-cerrar {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.carrito-cuerpo {
+  padding: 20px;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.item-carrito-min {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.carrito-pie {
+  padding: 20px;
+  border-top: 1px solid #eee;
+}
+
+.carrito-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.btn-ir-carrito {
+  display: block;
+  text-align: center;
+  background: #1e90ff;
+  color: white;
+  padding: 12px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+/* =========================================
+   MODAL DE CONFIRMACIÓN
+   ========================================= */
+.modal-oculto {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 11000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-oculto.activo {
+  display: flex;
+}
+
+.modal-caja {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.modal-botones {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn-secundario {
+  padding: 8px 15px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-peligro {
+  padding: 8px 15px;
+  border: none;
+  background: #dc3545;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+
+
+
+
+
+/* EL CUPÓN */
+.bloque-cupon {
+  background: #f0f8ff;
+  border: 2px dashed #1e90ff;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.bloque-cupon h4 {
+  margin: 0 0 5px 0;
+  color: #1e90ff;
+  font-size: 1rem;
+}
+
+.bloque-cupon p {
+  margin: 0 0 10px 0;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.caja-copiar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+#texto-cupon {
+  font-family: monospace;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.btn-copiar {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-copiar.exito {
+  background: #28a745;
+}
+
+/* LEER MÁS Y ESTRELLAS */
+.texto-extra {
+  display: none;
+  color: #555;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+.texto-extra.visible {
+  display: block;
+}
+
+.btn-texto-enlace {
+  background: none;
+  border: none;
+  color: #1e90ff;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px 0 0 0;
+}
+
+.estrellas-contenedor {
+  font-size: 1.8rem;
+  color: #ddd;
+  cursor: pointer;
+  display: flex;
+  gap: 5px;
+}
+
+.estrella.activa {
+  color: #1e90ff;
+}
+
+.mensaje-feedback {
+  margin-top: 5px;
+  font-size: 0.85rem;
+  color: #1e90ff;
+  font-weight: 500;
+  min-height: 20px;
+}
